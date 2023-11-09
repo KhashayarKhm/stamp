@@ -13,6 +13,7 @@ import (
 	"regexp"
 
 	"github.com/KhashayarKhm/stamp/internal/config"
+	"github.com/KhashayarKhm/stamp/internal"
 	"github.com/spf13/cobra"
 )
 
@@ -68,7 +69,15 @@ func (wmCmd *Watermark) run(config *config.Config, trap chan os.Signal, args []s
 	outputName, _ := cmd.Flags().GetString("output")
 	if outputName == "" {
 		outputName = fmt.Sprintf("stamped_%s", filepath.Base(mainPicPath))
-	}
+  } else if exists, stat, err := internal.FileExists(outputName); err != nil {
+    return err;
+  } else if exists {
+    if stat.IsDir() {
+      outputName = filepath.Join(outputName, fmt.Sprintf("stamped_%s", filepath.Base(mainPicPath)))
+    } else {
+      outputName = filepath.Join(filepath.Dir(outputName), fmt.Sprintf("stamped_%s", filepath.Base(mainPicPath)))
+    }
+  }
 
 	mainPicCT, err := validateImage(mainPicPath)
 	if err != nil {
