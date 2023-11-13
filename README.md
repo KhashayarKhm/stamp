@@ -62,4 +62,4 @@ Feel free to contribute to this project by opening issues, making feature reques
 
 ## License
 
-This project is licensed under the GPLv3 or later License. See the [LICENSE](https://github.com/KhashayarKhm/stamp/blob/main/LICENSE) file for more details.
+This project is licensed under the GPLv3 or later License. See the [LICENSE](https://github.com/KhashayarKhm/stamp/blob/master/LICENSE) file for more details.
