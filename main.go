@@ -13,7 +13,7 @@ import (
 func main() {
   log.SetFlags(log.Flags() &^ (log.Ldate | log.Ltime))
 
-	root := &cobra.Command{Short:  "Watermark command", Version: "1.0.0"}
+	root := &cobra.Command{Short:  "Watermark command", Version: "1.1.0"}
 
 	trap := make(chan os.Signal, 1)
 	signal.Notify(trap, syscall.SIGINT, syscall.SIGTERM)
